@@ -3,7 +3,7 @@ name: Claim
 
 on:
   push:
-    branches: ["main"]
+    branches: ["maine"]
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
       max-parallel: 20
       fail-fast: false
       matrix:
-        rangeIndex: ["985 990 1", "985 990 2", "985 990 3", "985 990 4", "985 990 5", "990 995 6", "990 995 7", "990 995 8", "990 995 9", "990 995 10", "995 1000 11", "995 1000 12", "995 1000 13", "995 1000 14", "995 1000 15"]
+        rangeIndex: []
     steps:
     - uses: actions/checkout@v4
     - name: Install Dependencies
