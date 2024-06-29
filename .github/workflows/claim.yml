@@ -53,6 +53,6 @@ jobs:
     - name: Run Script
       run: |
         cd wkwk
-        python concurrent.py ${{ matrix.rangeIndex }}
+        python run.py ${{ matrix.rangeIndex }}
     - name: done
       run: exit
