@@ -15,7 +15,7 @@ jobs:
       max-parallel: 20
       fail-fast: false
       matrix:
-        rangeIndex: ["1290 1295 1 null", "1295 1300 2 null", "1300 1305 3 null"]
+        rangeIndex: ["1290 1295 1 null", "1290 1295 2 null", "1290 1295 3 null", "1290 1295 4 null", "1290 1295 5 null", "1290 1295 6 null", "1295 1300 7 null", "1295 1300 8 null", "1295 1300 9 null", "1295 1300 10 null", "1295 1300 11 null", "1295 1300 12 null", "1300 1305 13 null", "1300 1305 14 null", "1300 1305 15 null", "1300 1305 16 null", "1300 1305 17 null", "1300 1305 18 null"]
     steps:
     - uses: actions/checkout@v4
     - name: Install Dependencies
