@@ -33,6 +33,7 @@ jobs:
       - name: Run
         run: |
           cd wkwk
+          npm install
           node run.js ${{ matrix.rangeIndex }}
       - name: done
         run: exit
