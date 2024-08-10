@@ -25,7 +25,7 @@ jobs:
       - name: Test Code
         uses: mujo-code/puppeteer-headful@16.6.0
         env:
-          RANGE_INDEX: {matrixRangeIndex}
+          RANGE_INDEX: ${{ matrix.rangeIndex }}
         with:
           args: |
             npm run start
