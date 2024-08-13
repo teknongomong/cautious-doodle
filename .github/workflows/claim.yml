@@ -26,7 +26,7 @@ jobs:
       - name: Test Code
         uses: mujo-code/puppeteer-headful@16.6.0
         env:
-          RANGE_INDEX: {matrix.rangeIndex}
+          RANGE_INDEX: ${{ matrix.rangeIndex }}
           MY_DATA: ${{secrets.WK_U}} ${{secrets.WK_I}} ${{secrets.WK_S}} ${{secrets.BK_U}}
         with:
           args: |
