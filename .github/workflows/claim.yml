@@ -1,9 +1,10 @@
 
+
 name: Runme
 
 on:
   push:
-    branches: ["maine"]
+    branches: ["main"]
 
 jobs:
   build:
@@ -13,38 +14,22 @@ jobs:
       max-parallel: 20
       fail-fast: false
       matrix:
-        rangeIndex: ["0 5 1", "0 5 2", "0 5 3", "0 5 4", "0 5 5", "0 5 6", "0 5 7", "5 10 8", "5 10 9", "5 10 10", "5 10 11", "5 10 12", "5 10 13", "5 10 14", "10 15 15", "10 15 16", "10 15 17", "10 15 18", "10 15 19", "10 15 20", "10 15 21"]
+        rangeIndex: ["0 5 1"]
     steps:
       - uses: actions/checkout@v3
       - name: Install Dependencies
         uses: actions/setup-node@v4
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "true"
         with:
           node-version: 18
-      - name: Install libraries
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libgbm1
-          sudo apt-get install -yq libgconf-2-4
-          sudo apt-get install -y wget xvfb --no-install-recommends
-          sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable --no-install-recommends
-          sudo rm -rf /var/lib/apt/lists/*
-          export PUPPETEER_SKIP_DOWNLOAD=true
-          export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-          export PUPPETEER_EXEC_PATH="google-chrome-stable"
-          echo $DISPLAY
-      - name: Setup Code
-        run: |
-          node index.js
-          npm i
-          node asis.js ${{secrets.WK_U}} ${{secrets.WK_I}} ${{secrets.WK_S}} ${{secrets.BK_U}}
-          ls -la
-      - name: Run
-        run: |
-          cd wkwk
-          npm install
-          node asli.js ${{ matrix.rangeIndex }}
+      - name: Test Code
+        uses: mujo-code/puppeteer-headful@16.6.0
+        env:
+          RANGE_INDEX: {matrix.rangeIndex}
+          MY_DATA: ${{secrets.WK_U}} ${{secrets.WK_I}} ${{secrets.WK_S}} ${{secrets.BK_U}}
+        with:
+          args: |
+            npm run start
       - name: done
         run: exit
