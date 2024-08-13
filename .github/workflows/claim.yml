@@ -23,7 +23,7 @@ jobs:
       - name: Install libraries
         run: |
           sudo apt-get update
-          sudo apt-get install -yq libgbm 
+          sudo apt-get install -y libgbm1
           sudo apt-get install -yq libgconf-2-4
           sudo apt-get install -y wget xvfb --no-install-recommend
           sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
