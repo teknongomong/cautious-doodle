@@ -1,0 +1,12 @@
+{
+  "name": "start",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js && npm install && node asis.js && cd wkwk && npm install && node run.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
